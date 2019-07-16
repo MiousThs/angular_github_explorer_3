@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.wrapper div {
+    width: 40vw;
+}
+
+img {
+    width: 40vw;
+}

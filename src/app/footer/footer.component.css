@@ -1,0 +1,16 @@
+.wrapper {
+    margin-left: calc(50% - 50vw);
+    width: 100vw;
+    height: 2.5em;
+    background-color: #3f334d;
+    color: whitesmoke;
+    font-size: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    align-items: center;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: aqua;
+}
+

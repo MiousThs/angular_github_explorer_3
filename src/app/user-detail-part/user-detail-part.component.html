@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <div class="header">
+        <div class='icon'>
+            <img src="{{ user.avatar_url }}" alt="users avatar">
+        </div>
+        <div class="userName">
+            <h2>{{ user.name }}</h2>
+        </div>
+        <div class="linkToGH">
+            <a href="{{ user.html_url }}">View on GitHub</a>
+        </div>
+    </div>
+    <div class="body">
+        <div class="name">
+            <p><span>Name:</span> {{ user.name }}</p>
+        </div>
+        <div class="createdAt">
+            <p><span>Created at:</span> {{ user.created_at }}</p>
+        </div>
+        <div class="location" *ngIf="user.location">
+            <p><span>Location:</span> {{ user.location }}</p>
+        </div>
+        <div class="company" *ngIf="user.company">
+            <p><span>Company:</span> {{ user.company }}</p>
+        </div>
+        <div class="email" *ngIf="user.email">
+            <p><span>Email:</span> {{ user.email }}</p>
+        </div>
+    </div>
+    <div class="reposPara"><p><span>Repos:</span></p></div>
+    <div class="repos">
+        <div *ngFor="let repo of user.repos">
+            <a href="https://github.com/{{ user.login }}/{{ repo.name }}">{{ repo.name }}</a>
+        </div>
+    </div>
+</div>

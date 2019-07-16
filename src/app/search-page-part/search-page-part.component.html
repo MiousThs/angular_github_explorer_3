@@ -1,0 +1,39 @@
+<div class="searchBar">
+    <h2><label for="search-box">Search Users</label></h2>
+    <div>
+        <input #searchBox id="search-box" (input)="this.term = searchBox.value" value="{{ this.term }}"/>
+        <a routerLink="/search/{{ this.term }}"><button (click)="this.search(this.term)">Search</button></a>  
+    </div>
+</div>
+
+<div class="results">
+    <ul>
+        <div *ngFor="let user of foundUsers$">
+            <li>
+                <div class="wrapper">
+                    <div class="head">
+                        <img src="{{ user.avatar_url }}" alt="">
+                        <p>@{{ user.login }}</p>
+                    </div>
+                    <div class="links">
+                        <a routerLink="/user/{{ user.login }}">View Details</a>
+                        <a href="https://github.com/{{ user.login }}">Open on Github</a>
+                    </div>
+                </div>
+            </li>        
+        </div>
+    </ul>
+</div>
+<div class="pages">
+    <div *ngIf="this.currentPage"><p>{{ this.currentPage }} of {{ this.amountOfPages }}</p></div>
+    <div *ngIf="this.currentPage && this.amountOfPages > 1">
+        <input #pageNum type="number" min="1" max="{{ this.amountOfPages }}">
+        <button (click)="getPage(pageNum.value)">Go to</button>
+    </div>
+    <div class="btns" *ngIf="foundUsers$">
+        <button id="first" (click)="getPage(1)">First page</button>
+        <button id="prev" *ngIf="this.currentPage!=1" (click)="getPage(this.currentPage-1)">Previous</button>
+        <button id="next" *ngIf="this.currentPage!=this.amountOfPages" (click)="getPage(this.currentPage+1)">Next</button>
+        <button id="last" (click)="getPage(this.amountOfPages)">Last Page</button>
+    </div>
+</div>
